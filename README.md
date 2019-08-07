@@ -5,7 +5,7 @@
 |Column|Type|Options|
 |---|---|---|
 |name|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
+
 
 ### Association
 - has_many : members
@@ -29,8 +29,8 @@
 
 |Column|Type|Options|
 |---|---|---|
-|body|text|null:false|
-|image|text| |
+|body|text| |
+|image|string| |
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
