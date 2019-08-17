@@ -1,0 +1,7 @@
+%form.new-message#new-message{action: "", method: "post"}
+  .input-box
+    %input#message_content.input-box__text{placeholder: "type a message", type: "text", name: ""}
+    %label.upload-label{for: "upload-icon"}
+      = fa_icon 'image'
+      %input#upload-icon{type: "file", name: ""}
+  %input.submit-btn{type: "submit", name: "commit", value: "Send"}

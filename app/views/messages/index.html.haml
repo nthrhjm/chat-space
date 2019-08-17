@@ -1,0 +1,21 @@
+!!!5
+%html{lang: "ja"}
+  %head
+  %body
+    .status-bar
+      %p.status-bar__text
+        グループを作成しました
+    .wrapper
+      .chat-menu
+        = render partial: "menu-header"
+        .groups
+          = render partial: "group"
+          = render partial: "group"
+
+      .chat-main
+        = render partial: "main-header"
+        .messages
+          = render partial: "message"
+          = render partial: "message"
+        .form
+          = render partial: "new-message"
