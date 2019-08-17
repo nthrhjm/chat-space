@@ -1,0 +1,11 @@
+// CSSリセット
+@import "./reset";
+
+//変数定義
+@import "./variable";
+
+//アイコンフォント読み込み
+@import "font-awesome";
+
+
+@import "./modules/messages";
