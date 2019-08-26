@@ -50,7 +50,7 @@
       }
     }
     .groups {
-      height: calc(100vh - 100px - 24px);
+      height: calc(100vh - 100px);
       padding: 20px 20px 0;
       background-color: #2f3e51;
       .group {
@@ -102,7 +102,7 @@
       }
     }
     .messages {
-      height: calc(100vh - 190px - 24px);
+      height: calc(100vh - 190px);
       padding: 46px 40px;
       background-color: #fafafa;
       overflow: scroll;

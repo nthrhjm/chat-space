@@ -2,9 +2,10 @@
 .menu-header
   .menu-header__box
     .menu-header__box__name
-      ojisan
+      = current_user.name
     .menu-header__box__menu
       .menu-header__box__menu__new-group
         = fa_icon 'edit'
       .menu-header__box__menu__settings
-        = fa_icon 'cog'
+        = link_to edit_user_path(current_user) do
+          = fa_icon 'cog'
