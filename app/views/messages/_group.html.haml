@@ -1,5 +1,7 @@
-.group
-  .group__name
-    sample-group
-  .group__latest_message
-    Good bye world
+- current_user.groups.each do |group|
+  .group
+    = link_to group_messages_path(group) do
+      .group__name
+        = group.name
+      .group__latest_message
+        メッセージはまだありません。
