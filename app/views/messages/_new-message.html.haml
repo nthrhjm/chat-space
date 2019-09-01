@@ -1,7 +1,30 @@
-%form.new-message#new-message{action: "", method: "post"}
-  .input-box
-    %input#message_content.input-box__text{placeholder: "type a message", type: "text", name: ""}
-    %label.upload-label{for: "upload-icon"}
-      = fa_icon 'image'
-      %input#upload-icon{type: "file", name: ""}
-  %input.submit-btn{type: "submit", name: "commit", value: "Send"}
+-# 自作
+-# %form.new-message#new-message{action: "", method: "post"}
+-#   .input-box
+-#     %input#message_content.input-box__text{placeholder: "type a message", type: "text", name: ""}
+-#     %label.upload-label{for: "upload-icon"}
+-#       = fa_icon 'image'
+-#       %input#upload-icon{type: "file", name: ""}
+-#   %input.submit-btn{type: "submit", name: "commit", value: "Send"}
+
+-####################################################################################
+-# 融合バージョン
+-# .new-message#new-message
+-#   = form_for [@group, @message] do |f|
+-#     .input-box
+-#       = f.text_field :content, class: 'input-box__text',id: 'message_content', placeholder: 'type a message'
+-#       .form__mask
+-#         = f.label :image, class: 'upload-label',for: "upload-icon" do
+-#           = fa_icon 'image', class: 'icon'
+-#           = f.file_field :image, class: 'hidden'
+-#       = f.submit 'Send', class: 'submit-btn'
+
+-####################################################################################
+-# カリキュラムコピペ
+= form_for [@group, @message] do |f|
+  = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+  .form__mask
+    = f.label :image, class: 'form__mask__image' do
+      = fa_icon 'picture-o', class: 'icon'
+      = f.file_field :image, class: 'hidden'
+  = f.submit 'Send', class: 'form__submit'
