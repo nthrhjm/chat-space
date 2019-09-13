@@ -5,24 +5,23 @@ $(function(){
     var content = message.content ? `${ message.content }` : "";
     //画像があるか？
     var img = message.image ? `<img class="message__lower__text" src="${ message.image }" >` : "";
-    // var img = message.image ? `<img src= "${ message.image }">` : "";
     //HTMLを生成
     var html = `<div class="message">
-    <div class="message__upper">
-    <p class="message__upper__user-name">
-    ${message.user_name}
-    </p>
-    <p class="message__upper__date">
-    ${message.created_at}
-    </p>
-    </div>
-    <div class="message__lower">
-    <p class="message__lower__text">
-    ${content}
-    </p>
-    <img class="message__lower__image" ${img}
-    </div>
-    </div>`
+                  <div class="message__upper">
+                    <p class="message__upper__user-name">
+                      ${message.user_name}
+                    </p>
+                    <p class="message__upper__date">
+                      ${message.created_at}
+                    </p>
+                   </div>
+                    <div class="message__lower">
+                      <p class="message__lower__text">
+                        ${content}
+                      </p>
+                    <img class="message__lower__image" ${img}
+                    </div>
+                </div>`
 
     return html
   }
@@ -56,7 +55,7 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html);
-      $('.js-textfield').val('');
+      $('#js-form')[0].reset();
       scrollBottom();
     })
    
