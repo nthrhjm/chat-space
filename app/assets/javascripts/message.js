@@ -4,7 +4,8 @@ $(function(){
     //メッセージ文があるか？
     var content = message.content ? `${ message.content }` : "";
     //画像があるか？
-    var img = message.image ? `<img src= "${ message.image }">` : "";
+    var img = message.image ? `<img class="message__lower__text" src="${ message.image }" >` : "";
+    // var img = message.image ? `<img src= "${ message.image }">` : "";
     //HTMLを生成
     var html = `<div class="message">
     <div class="message__upper">
@@ -19,7 +20,7 @@ $(function(){
     <p class="message__lower__text">
     ${content}
     </p>
-    <img class="message__lower__image" ${img}>
+    <img class="message__lower__image" ${img}
     </div>
     </div>`
 
