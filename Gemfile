@@ -64,3 +64,6 @@ gem 'devise'
 #画像アップローダー
 gem 'carrierwave'
 gem 'mini_magick'
+
+#デバッグのヤツ
+gem 'pry-rails'
