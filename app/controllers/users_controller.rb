@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
   def search
-    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%")
-    # binding.pry
+    if params[:groupId].present?# group.idがある
+      
+      @group = Group.find(params[:groupId])
+      @ids = @group.users.ids
+      @users = User.where.not(id: @ids).where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}") 
+    else
+      # group.idがない
+      @users = User.where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}") 
+    end
+
     respond_to do |format|
       format.html
       format.json
