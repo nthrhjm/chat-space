@@ -66,4 +66,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 #デバッグのヤツ
-gem 'pry-rails'
+gem 'pry-rails
