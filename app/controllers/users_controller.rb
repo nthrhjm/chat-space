@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def search
-    if params[:groupId].present?# group.idがある
-      
+    if params[:groupId].present?
+      # group.idがある
       @group = Group.find(params[:groupId])
       @ids = @group.users.ids
       @users = User.where.not(id: @ids).where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}") 

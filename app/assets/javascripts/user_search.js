@@ -33,14 +33,13 @@ $(function() {
 
   // 検索フォームに入力があったら
   $('#user-search-field').on('keyup', function() {
-    // e.preventDefault();
     var target = $('#user-search-field').val();
     var group_id = $('chat__group_id').val();
     var url = '/users/search'
  
 
   // 送信するデータを生成する
-    $.ajax( {
+    $.ajax({
       url: url,
       type: 'GET',
       data: {keyword: target, groupId: group_id},
@@ -66,9 +65,9 @@ $(function() {
       alert('検索に失敗しました');
     })
 
+  })
 
-
-  // 追加ボタンを押すと
+    // 追加ボタンを押すと
   $(document).on('click', '.chat-group-user__btn--add', function(){
     // 追加したメンバーを取得してオブジェクトにする
     var user_name = $(this).data('user-name');
