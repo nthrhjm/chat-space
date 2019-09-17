@@ -1,13 +1,9 @@
 .wrapper
   .chat-menu
     = render 'shared/side_bar'
-    -# = render partial: "menu-header"
-    -# .groups
-    -#   = render partial: "group"
-
 
   .chat-main
-    = render partial: "main-header"
+    = render partial: "main-header", locals: { group: @group }
     .messages
       = render partial: 'message', collection: @messages
     .form

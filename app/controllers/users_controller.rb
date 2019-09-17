@@ -1,4 +1,21 @@
 class UsersController < ApplicationController
+  def search
+    if params[:groupId].present?
+      # group.idがある
+      @group = Group.find(params[:groupId])
+      @ids = @group.users.ids
+      @users = User.where.not(id: @ids).where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}") 
+    else
+      # group.idがない
+      @users = User.where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}") 
+    end
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+  
   def edit
   end
 
@@ -11,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   private
-
   def user_params
     params.require(:user).permit(:name, :email)
   end
