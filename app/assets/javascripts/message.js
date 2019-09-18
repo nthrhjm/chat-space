@@ -84,7 +84,7 @@ $(function(){
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
       })
       .fail(function() {
-        console.log('error');
+        alert('通信が失敗しました');
       });
     }
   };
