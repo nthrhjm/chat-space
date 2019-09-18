@@ -43,7 +43,7 @@ set :keep_releases, 5
 
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
-                  keys: ['~/.ssh/key_pair.pem']  ※例：~/.ssh/key_pem.pem
+                  keys: ['~/.ssh/key_pair.pem']
 
 # Unicornの設定ファイルの場所
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
