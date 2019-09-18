@@ -4,7 +4,6 @@ $(function(){
 
     var image = (message.image.url) ? `<img class="message__lower__image" src="${ message.image.url }" >` : "";
     //HTMLを生成
-    if (image){
       var html = `<div class="message" data-message-id="${ message.id }">
                     <div class="message__upper">
                       <p class="message__upper__user-name">
@@ -21,23 +20,6 @@ $(function(){
                           ${image}
                       </div>
                   </div>`
-    } else {
-      var html = `<div class="message" data-message-id="${ message.id }">
-      <div class="message__upper">
-        <p class="message__upper__user-name">
-          ${message.user_name}
-        </p>
-        <p class="message__upper__date">
-          ${message.created_at}
-        </p>
-      </div>
-        <div class="message__lower">
-          <p class="message__lower__text">
-            ${message.content}
-          </p>
-        </div>
-    </div>`
-    }
     return html
   }
 
