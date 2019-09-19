@@ -42,7 +42,7 @@ $(function() {
  
 
   // 送信するデータを生成する
-    if(target !== $('p#js-g-member-name').text())
+    // if(target !== $('p#js-g-member-name').text())
       $.ajax({
         url: url,
         type: 'GET',
@@ -57,9 +57,7 @@ $(function() {
       } else if(target.length !== 0 ) {
         $("#user-search-result").empty();
         users.forEach(function(user){
-          // if(user !== group_list.val()){
             appendList(user);
-          // }
           
         });
       } else {
