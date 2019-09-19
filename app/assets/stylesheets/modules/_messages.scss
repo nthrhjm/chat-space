@@ -9,6 +9,8 @@
   }
 }
 .wrapper {
+  display: flex;
+  // width: 100%;
   .chat-menu {
     width: 300px;
     float: left;

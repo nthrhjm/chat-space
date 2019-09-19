@@ -4,12 +4,15 @@ $(function() {
   var group_list = $('#js-chat-member');
   //検索と合うユーザーをサーチ結果のリストに追加する関数
   function appendList(user) {
+    // if(user.name !== $('p#js-g-member-name').text()){
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${user.name}</p>
                   <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</div>
                 </div>`
-    
+    console.log(user.name);
+    console.log($('p#js-g-member-name').text());
     search_list.append(html);
+    // }
   }
   // 検索後、追加ボタンを押されたユーザーをグループメンバーのリストに追加する関数
   function appendUser(user) {
@@ -33,35 +36,38 @@ $(function() {
 
   // 検索フォームに入力があったら
   $('#user-search-field').on('keyup', function() {
-    // $("#user-search-result").empty();
     var target = $('#user-search-field').val();
     var group_id = $('chat__group_id').val();
     var url = '/users/search'
  
 
   // 送信するデータを生成する
-    $.ajax({
-      url: url,
-      type: 'GET',
-      data: {keyword: target, groupId: group_id},
-      dataType: 'json'
-    })
-
+    if(target !== $('p#js-g-member-name').text())
+      $.ajax({
+        url: url,
+        type: 'GET',
+        data: {keyword: target, groupId: group_id},
+        dataType: 'json'
+      })
+    
     //非同期通信で期待するデータが帰ってきた
     .done(function(users) {
       if (target.length === 0) {
         $("#user-search-result").empty();
-      } else if(target.length !== 0) {
-        $('#user-search-result').empty();
+      } else if(target.length !== 0 ) {
+        $("#user-search-result").empty();
         users.forEach(function(user){
-          appendList(user);
+          // if(user !== group_list.val()){
+            appendList(user);
+          // }
+          
         });
       } else {
         $("#user-search-result").empty();
         // 検索したユーザー名がない場合
         appendErrorMsgToHTML("一致するユーザーはいません");
       }
-   })
+    })
     // エラーが帰ってきた
     .fail(function(){
       alert('検索に失敗しました');
@@ -87,5 +93,5 @@ $(function() {
     // 追加リストからメンバーを削除
     $(this).parent().remove();
   })
-  
+
 })

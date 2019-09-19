@@ -2,6 +2,6 @@
   - if member.id != current_user.id   
     #chat-group-user-22.chat-group-user.clearfix 
       %input{ name: "group[user_ids][]", type: "hidden", value: "#{member.id}" }  
-      %p.chat-group-user__name 
+      %p.chat-group-user__name#js-g-member-name
         = member.name 
       .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 削除
