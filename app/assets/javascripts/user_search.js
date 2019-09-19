@@ -33,6 +33,7 @@ $(function() {
 
   // 検索フォームに入力があったら
   $('#user-search-field').on('keyup', function() {
+    // $("#user-search-result").empty();
     var target = $('#user-search-field').val();
     var group_id = $('chat__group_id').val();
     var url = '/users/search'
@@ -48,14 +49,15 @@ $(function() {
 
     //非同期通信で期待するデータが帰ってきた
     .done(function(users) {
-      // 以前の検索結果を消すempty()
-      $("#user-search-result").empty();
-      if (users.length === 0) {
-      } else if(users.length !== 0) {
+      if (target.length === 0) {
+        $("#user-search-result").empty();
+      } else if(target.length !== 0) {
+        $('#user-search-result').empty();
         users.forEach(function(user){
           appendList(user);
         });
       } else {
+        $("#user-search-result").empty();
         // 検索したユーザー名がない場合
         appendErrorMsgToHTML("一致するユーザーはいません");
       }
@@ -85,5 +87,5 @@ $(function() {
     // 追加リストからメンバーを削除
     $(this).parent().remove();
   })
-
+  
 })
