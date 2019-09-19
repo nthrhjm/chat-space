@@ -71,6 +71,7 @@ gem 'devise'
 #画像アップローダー
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
 
 #デバッグのヤツ
 gem 'pry-rails'

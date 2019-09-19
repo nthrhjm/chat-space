@@ -23,3 +23,5 @@ public/uploads/*
 
 #jetbrainsのアレ
 .idea/*
+
+config/secrets.yml
