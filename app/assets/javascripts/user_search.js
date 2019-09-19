@@ -4,13 +4,10 @@ $(function() {
   var group_list = $('#js-chat-member');
   //検索と合うユーザーをサーチ結果のリストに追加する関数
   function appendList(user) {
-    // if(user.name !== $('p#js-g-member-name').text()){
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${user.name}</p>
                   <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</div>
                 </div>`
-    console.log(user.name);
-    console.log($('p#js-g-member-name').text());
     search_list.append(html);
     // }
   }
@@ -37,12 +34,11 @@ $(function() {
   // 検索フォームに入力があったら
   $('#user-search-field').on('keyup', function() {
     var target = $('#user-search-field').val();
-    var group_id = $('chat__group_id').val();
+    var group_id = $('.chat__group_id').attr('value');
     var url = '/users/search'
  
 
   // 送信するデータを生成する
-    // if(target !== $('p#js-g-member-name').text())
       $.ajax({
         url: url,
         type: 'GET',
