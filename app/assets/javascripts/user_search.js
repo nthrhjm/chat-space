@@ -15,7 +15,7 @@ $(function() {
   function appendUser(user) {
     var html = `<div class='chat-group-user clearfix'>
                   <input name='group[user_ids][]' type='hidden' value='${user.id}'>
-                  <p class='chat-group-user__name'>${user.name}</p>
+                  <p class='chat-group-user__name js-added-user-name'>${user.name}</p>
                   <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
                 </div>`
     group_list.append(html);
@@ -30,6 +30,7 @@ $(function() {
   }
 
 
+  
 
   // 検索フォームに入力があったら
   $('#user-search-field').on('keyup', function() {
@@ -53,7 +54,7 @@ $(function() {
       } else if(target.length !== 0 ) {
         $("#user-search-result").empty();
         users.forEach(function(user){
-            appendList(user);
+          appendList(user);
           
         });
       } else {

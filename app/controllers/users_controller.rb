@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       @group = Group.find(params[:groupId])
       @ids = @group.users.ids
       @users = User.where.not(id: @ids).where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}") 
+
     else
       # group.idがない
       @users = User.where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}") 
