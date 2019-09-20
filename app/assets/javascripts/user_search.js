@@ -49,25 +49,22 @@ $(function() {
     
     //非同期通信で期待するデータが帰ってきた
     .done(function(users) {
-      if (target.length === 0) {
-        $("#user-search-result").empty();
-      } else if(target.length !== 0 ) {
-        $("#user-search-result").empty();
-        users.forEach(function(user){
-          appendList(user);
-          
-        });
-      } else {
-        $("#user-search-result").empty();
-        // 検索したユーザー名がない場合
-        appendErrorMsgToHTML("一致するユーザーはいません");
+      $("#user-search-result").empty();
+      if (target.length !== 0){
+        if (users.length !== 0) {
+          users.forEach(function (user) {
+              appendList(user);
+          })
+        } else {
+          appendErrorMsgToHTML("一致するユーザーはいません");
+
+        }
       }
     })
     // エラーが帰ってきた
     .fail(function(){
       alert('検索に失敗しました');
     })
-
   })
 
     // 追加ボタンを押すと
@@ -80,7 +77,6 @@ $(function() {
     $(this).parent().remove();
     // ユーザーをグループリストに追加
     appendUser(user);
-    
   })
   
   // 削除ボタンを押すと
@@ -88,5 +84,8 @@ $(function() {
     // 追加リストからメンバーを削除
     $(this).parent().remove();
   })
-
 })
+
+
+
+
