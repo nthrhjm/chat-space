@@ -26,6 +26,7 @@
     .chat-group-form__field--right#js-chat-member
       #chat-group-user-22.chat-group-user.clearfix 
         %p.chat-group-user__name#current-user-name
+          %input{ name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}" }  
           = current_user.name 
       / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
       = render partial: "member", collection: members
