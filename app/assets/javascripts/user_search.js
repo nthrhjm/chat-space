@@ -4,15 +4,18 @@ $(function() {
   var group_list = $('#js-chat-member');
   //検索と合うユーザーをサーチ結果のリストに追加する関数
   function appendList(user) {
+    if(member_names.indexOf(user.name) === -1){
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${user.name}</p>
                   <div class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</div>
                 </div>`
     search_list.append(html);
+    }
     // }
   }
   // 検索後、追加ボタンを押されたユーザーをグループメンバーのリストに追加する関数
   function appendUser(user) {
+    member_names.push(user.name)
     var html = `<div class='chat-group-user clearfix'>
                   <input name='group[user_ids][]' type='hidden' value='${user.id}'>
                   <p class='chat-group-user__name js-added-user-name'>${user.name}</p>
@@ -29,7 +32,7 @@ $(function() {
     search_list.append(html);
   }
 
-
+var member_names = []
   
 
   // 検索フォームに入力があったら
@@ -54,6 +57,7 @@ $(function() {
         if (users.length !== 0) {
           users.forEach(function (user) {
               appendList(user);
+           
           })
         } else {
           appendErrorMsgToHTML("一致するユーザーはいません");
@@ -81,6 +85,13 @@ $(function() {
   
   // 削除ボタンを押すと
   $(document).on('click', '.js-remove-btn', function() {
+    var name = $(this).prev().text();
+    for(i=0; i < member_names.length; i++){
+      if(member_names[i] == name){
+          //spliceメソッドで要素を削除
+          member_names.splice(i, 1);
+      }
+  }
     // 追加リストからメンバーを削除
     $(this).parent().remove();
   })
